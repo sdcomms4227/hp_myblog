@@ -22,7 +22,7 @@ public class ArticleApiController {
 
         Article article = form.toEntity();
 
-        // 리파티터리에게(db-관리-객체) 전달
+        // 리파지터리에게(db-관리-객체) 전달
         Article saved = articleRepository.save(article);
         log.info(saved.toString());
 
