@@ -8,7 +8,8 @@ public class HelloController {
 
     @GetMapping("/") // 다음 url 요청을 받음 -> "/"를 보여줘 -> 아래 메소드를 수행!
     public String hello(){
-        return "helloworld"; // helloworld.mustache 페이지를 반환!
+        //return "helloworld"; // helloworld.mustache 페이지를 반환!
+        return "redirect:/init";
     }
 
     @GetMapping("/greetings")

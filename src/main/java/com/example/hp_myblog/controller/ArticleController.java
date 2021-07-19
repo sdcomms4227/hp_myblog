@@ -33,7 +33,7 @@ public class ArticleController {
     
     @GetMapping("/articles/new") // GET 요청이 해당 url로 오면, 아래 메소드를 수행!
     public String newArticle(){
-        return "articles/new"; // 보여줄 뷰 페이지
+        return "articles/change"; // 보여줄 뷰 페이지
     }
 
     @PostMapping("/articles") // Post 방식으로 "/articles" 요청이 등어오면, 아래 메소드 수행!
@@ -73,6 +73,6 @@ public class ArticleController {
                 () -> new IllegalArgumentException("해당 Article이 없습니다.")
         );
         model.addAttribute("article", target);
-        return "articles/edit";
+        return "articles/change";
     }
 }
