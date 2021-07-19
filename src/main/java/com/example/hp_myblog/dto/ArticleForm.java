@@ -2,8 +2,10 @@ package com.example.hp_myblog.dto;
 
 import com.example.hp_myblog.entity.Article;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data // 생성자(지폴트, All), 게터, 세터, toString 등 다 만들어 줌!
+@NoArgsConstructor
+@Data // 생성자(디폴트, All), 게터, 세터, toString 등 다 만들어 줌!
 public class ArticleForm {
     private Long id; // id 필드 추가!
     private String author;
