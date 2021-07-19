@@ -32,4 +32,11 @@ public class Article {
         this.title = title;
         this.content  = content;
     }
+
+    // 내용을 재작성!
+    public void rewrite(String author, String title, String content) {
+        this.author = author;
+        this.title = title;
+        this.content = content;
+    }
 }
