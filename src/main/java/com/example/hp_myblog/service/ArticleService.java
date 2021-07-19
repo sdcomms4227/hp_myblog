@@ -5,6 +5,7 @@ import com.example.hp_myblog.entity.Article;
 import com.example.hp_myblog.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.pool.TypePool;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -32,5 +33,14 @@ public class ArticleService {
         Article saved = articleRepository.save(target);
 
         return saved;
+    }
+
+    @Transactional
+    public Long destroy(Long id) {
+        Article target = articleRepository.findById(id).orElseThrow(
+            () -> new IllegalArgumentException("해당 Article이 없습니다.")
+        );
+        articleRepository.delete(target);
+        return target.getId();
     }
 }

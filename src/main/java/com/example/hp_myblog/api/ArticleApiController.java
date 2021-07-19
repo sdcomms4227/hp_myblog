@@ -60,4 +60,9 @@ public class ArticleApiController {
         Article saved = articleService.update(id, form); // 서비스 객체가 update를 수행
         return saved.getId();
     }
+
+    @DeleteMapping("/api/articles/{id}") // HTTP 메소드 DELETE 메소드로 "/api/articles/{id}" 요청이 온다면,
+    public Long destroy(@PathVariable Long id){
+        return articleService.destroy(id); // 서비스 객체가 destroy()를 수행!
+    }
 }
