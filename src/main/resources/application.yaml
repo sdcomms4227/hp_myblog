@@ -1,0 +1,12 @@
+# 주의! 들여쓰기 민감!
+spring:
+  # DB 설정
+  h2:
+    console:
+      enabled: true
+
+  # JPA 설정
+  jpa:
+    show-sql: true #JPA 동작 시, 내부 SQL 출력!
+    properties:
+      hibernate.format_sql: true # 보기 좋게 출력!
