@@ -43,6 +43,7 @@ public class Article extends BaseTime {
     // fetch: 연결 방법 설정
     // mappedBy: comments를 연결할 테이블명 설정!
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "article")
+    @OrderBy("id desc")
     private List<Comment> comments;
 
     @Override // toString() 메소드를 직접 오버라이딩(재정의) 함!

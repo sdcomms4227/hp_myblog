@@ -32,11 +32,30 @@ public class CommentService {
                         () -> new IllegalArgumentException("댓글을 작성할 Article이 없습니다.")
                 );
 
-        //댓글 엔티티에 게시글 엔티티를 등록
+        // 댓글 엔티티에 게시글 엔티티를 등록
         comment.stickTo(article);
         log.info("written: " + comment.toString());
         Comment saved = commentRepository.save(comment);
 
         return saved;
+    }
+
+    @Transactional
+    public Comment update(Long id, CommentForm form) {
+        // 수정 댓글 폼을 엔티티로 변경
+        log.info("form: " + form.toString());
+        Comment edited = form.toEntity();
+        log.info("edited: " + edited.toString());
+
+        // DB에서 기존 댓글을 가져옴
+        Comment target = commentRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException("해당 댓글이 없습니다.")
+                );
+
+        // 기존 댓글을 수정
+        target.rewrite(edited.getContent());
+        log.info("updated: " + target.toString());
+        return commentRepository.save(target);
     }
 }
