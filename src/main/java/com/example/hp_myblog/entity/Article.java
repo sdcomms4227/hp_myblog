@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter // 게터를 자동 생성!
 @ToString // toString() 자동 생성
@@ -32,11 +33,16 @@ public class Article extends BaseTime {
         this.title = title;
         this.content  = content;
     }
-
     // 내용을 재작성!
     public void rewrite(String author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
     }
+
+    // 하나의 Article은 여러 개의 Comment를 가질 수 있다!
+    // fetch: 연결 방법 설정
+    // mappedBy: comments를 연결할 테이블명 설정!
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "article")
+    private List<Comment> comments;
 }
